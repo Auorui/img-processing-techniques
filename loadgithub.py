@@ -29,14 +29,20 @@ def upload_to_github(local_folder, repo_url, commit_message="Initial commit"):
     run_git_command(["git", "init"], cwd=local_folder)
 
     # 配置用户信息（如果没有全局配置）
-    run_git_command(["git", "config", "user.name", "YourGitHubUsername"], cwd=local_folder)
-    run_git_command(["git", "config", "user.email", "YourEmail@example.com"], cwd=local_folder)
+    run_git_command(["git", "config", "user.name", "Auorui"], cwd=local_folder)
+    run_git_command(["git", "config", "user.email", "2165648225@qq.com"], cwd=local_folder)
+
+    # 强制将本地分支设置为 main
+    run_git_command(["git", "branch", "-M", "main"], cwd=local_folder)
 
     # 添加所有文件
     run_git_command(["git", "add", "."], cwd=local_folder)
 
     # 提交更改
     run_git_command(["git", "commit", "-m", commit_message], cwd=local_folder)
+
+    # 删除现有的远程 origin（如果存在）
+    run_git_command(["git", "remote", "remove", "origin"], cwd=local_folder)
 
     # 设置远程仓库
     run_git_command(["git", "remote", "add", "origin", repo_url], cwd=local_folder)
