@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 
 
-def run_git_command(command,cwd=None) :
+def run_git_command(command, cwd=None) :
 	"""运行 git 命令，并返回输出"""
 	result=subprocess.run(command,cwd=cwd,text=True,capture_output=True)
 	if result.returncode!=0 :
@@ -50,12 +50,9 @@ def upload_to_github(local_folder,repo_url,commit_message="Initial commit") :
 if __name__=="__main__" :
 	# 目标文件夹路径（替换为你的文件夹路径）
 	local_folder=r'D:\PythonProject\img_processing_techniques_main'
-
 	# 你的 GitHub 仓库 URL
 	repo_url="https://github.com/Auorui/img-processing-techniques.git"
-
 	# 提交信息（可选）
 	commit_message="Upload dataset and code"
-
 	# 调用上传函数
 	upload_to_github(local_folder,repo_url,commit_message)
