@@ -47,8 +47,8 @@ def upload_to_github(local_folder, repo_url, commit_message="Initial commit"):
     # 设置远程仓库
     run_git_command(["git", "remote", "add", "origin", repo_url], cwd=local_folder)
 
-    # 拉取远程仓库的 main 分支（合并远程更改）
-    run_git_command(["git", "pull", "origin", "main", "--allow-unrelated-histories"], cwd=local_folder)
+    # 拉取远程仓库的 main 分支，使用 rebase 来避免合并提交
+    run_git_command(["git", "pull", "--rebase", "origin", "main"], cwd=local_folder)
 
     # 推送到 GitHub 的 main 分支
     run_git_command(["git", "push", "-u", "origin", "main"], cwd=local_folder)
